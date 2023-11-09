@@ -1,0 +1,20 @@
+{
+  "app": {
+    "title": "ZaUI Restaurant",
+    "headerColor": "",
+    "textColor": "black",
+    "statusBarColor": "#f4f5f6",
+    "leftButton": "back"
+  },
+  "template": {
+    "primaryColor": "",
+    "secondaryColor": "",
+    "serviceFee": 25000,
+    "searchBar": true
+  },
+  "debug": false,
+  "listCSS": [],
+  "listSyncJS": [],
+  "listAsyncJS": [],
+  "pages": []
+}
