@@ -11,7 +11,7 @@ body {
 }
 hr {
   width: 100%;
-  background-color: #E4EEEF;;
+  background-color: #e4eeef;
   height: 0.5px;
   border: none;
 }
@@ -36,23 +36,29 @@ hr {
 .zaui-bottom-navigation-content::after {
   top: 0;
 }
-.zaui-btn-primary, .zaui-btn-primary.zaui-btn-highlight {
+.zaui-btn-primary,
+.zaui-btn-primary.zaui-btn-highlight {
   background-color: var(--zmp-primary-color);
 }
-.zaui-btn-tertiary, .zaui-btn-tertiary.zaui-btn-highlight {
+.zaui-btn-tertiary,
+.zaui-btn-tertiary.zaui-btn-highlight {
   color: var(--zmp-primary-color);
 }
-.zaui-btn-secondary, .zaui-btn-secondary.zaui-btn-highlight {
+.zaui-btn-secondary,
+.zaui-btn-secondary.zaui-btn-highlight {
   background-color: white;
   color: black;
 }
-.zaui-page, .no-scrollbar {
+.zaui-page,
+.no-scrollbar {
   &::-webkit-scrollbar {
     display: none;
   }
 }
 .zaui-tabs-tabbar {
   overflow-x: auto;
+  align-items: center;
+  justify-content: space-between;
 }
 .zaui-input-prefix {
   .zaui-btn-icon-only .zaui-btn-icon {
@@ -82,7 +88,11 @@ hr {
       width: 80px;
       z-index: 10;
       opacity: 0.5;
-      background: linear-gradient(to right, var(--zmp-page-bg-color) 80%, transparent);
+      background: linear-gradient(
+        to right,
+        var(--zmp-page-bg-color) 80%,
+        transparent
+      );
       pointer-events: none;
     }
     &::after {
@@ -94,7 +104,11 @@ hr {
       width: 80px;
       z-index: 10;
       opacity: 0.5;
-      background: linear-gradient(to left, var(--zmp-page-bg-color) 80%, transparent);
+      background: linear-gradient(
+        to left,
+        var(--zmp-page-bg-color) 80%,
+        transparent
+      );
       pointer-events: none;
     }
   }
@@ -103,7 +117,9 @@ hr {
   font-weight: 600;
 }
 .cart-preview {
-  &, .zaui-mask, .zaui-modal-wrapper {
+  &,
+  .zaui-mask,
+  .zaui-modal-wrapper {
     z-index: 10;
   }
   &.collapsed {

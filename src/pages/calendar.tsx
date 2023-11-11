@@ -37,11 +37,16 @@ function CalendarPage() {
               </Box>
             ) : (
               <>
-                {bookings.map((booking) => (
-                  <Box key={booking.id} my={4}>
-                    <BookingItem booking={booking} />
-                  </Box>
-                ))}
+                {bookings.map(
+                  (booking) => (
+                    
+                    (
+                      <Box key={booking.id} my={4}>
+                        <BookingItem booking={booking} />
+                      </Box>
+                    )
+                  ),
+                )}
               </>
             )}
           </Tabs.Tab>

@@ -21,15 +21,15 @@ const FoodPicker: FC<{
       typeof cartItemIndex !== "undefined"
         ? cart.items[cartItemIndex]
         : undefined,
-    [cart, cartItemIndex]
+    [cart, cartItemIndex],
   );
   const food = useMemo(
     () => (cartItem ? cartItem.food : foodProp!),
-    [cartItem]
+    [cartItem],
   );
 
   const [extras, setExtras] = useState<string[]>(
-    cartItem ? cartItem.food.extras.map((e) => e.key) : []
+    cartItem ? cartItem.food.extras.map((e) => e.key) : [],
   );
   const [options, setOptions] = useState(food.options.map((o) => o.selected));
   const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
@@ -175,7 +175,7 @@ const FoodPicker: FC<{
             </Box>
           </Box>
         </Sheet>,
-        document.body
+        document.body,
       )}
     </>
   );

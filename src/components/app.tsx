@@ -9,6 +9,7 @@ import RestaurantPage from "../pages/restaurant";
 import CalendarPage from "../pages/calendar";
 import Cart from "./cart";
 import { ConfigProvider, getConfig } from "./config-provider";
+import PayMentPage from "../pages/payment"
 
 const MyApp = () => {
   return (
@@ -28,6 +29,7 @@ const MyApp = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/restaurant" element={<RestaurantPage />}></Route>
                 <Route path="/calendar" element={<CalendarPage />}></Route>
+                <Route path="/payment" element={<PayMentPage />}></Route>
               </AnimationRoutes>
               <NavigationBar />
             </ZMPRouter>

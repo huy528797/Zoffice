@@ -5,11 +5,13 @@ import { Box, Tabs } from "zmp-ui";
 import { Restaurant } from "../../../models";
 import { menuState } from "../../../state";
 import FoodItem from "./food";
-
+import {  useLocation} from "react-router-dom";
 function MenuTable({ restaurant }: { restaurant: Restaurant }) {
   const menu = useRecoilValue(menuState);
+  const location = useLocation();
+  console.log('location', location)
   const [selectedCategory, setSelectedCategory] = useState(
-    menu.categories[0].id
+    menu.categories[0].id,
   );
 
   return (

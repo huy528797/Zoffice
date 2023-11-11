@@ -1,4 +1,4 @@
-import { createElement, ReactNode } from "react";
+import { createElement, ReactNode, useState } from "react";
 import { Box, Button, Icon, Text } from "zmp-ui";
 import Distance from "../../components/distance";
 import DistrictName from "../../components/district-name";
@@ -10,19 +10,22 @@ import { useRecoilState } from "recoil";
 import { currentRestaurantTabState } from "../../state";
 import React from "react";
 import { useRestaurant } from "../../hooks";
-
+import {  useLocation} from "react-router-dom";
 function RestaurantDetail() {
   const restaurant = useRestaurant();
   const [currentTab, setCurrentTab] = useRecoilState(currentRestaurantTabState);
-
+  // const [currentTab, setCurrentTab] = useState("menu");
   const TabItem = ({
     tab,
     children,
   }: {
     tab: TabType;
     children: ReactNode;
-  }) => (
-    <Button
+
+  }) => {
+    console.log(tab)
+    return(
+      <Button
       size="small"
       variant={currentTab === tab ? "primary" : "tertiary"}
       onClick={() => setCurrentTab(tab)}
@@ -30,7 +33,8 @@ function RestaurantDetail() {
     >
       {children}
     </Button>
-  );
+    );
+  };
 
   if (restaurant) {
     return (
@@ -78,8 +82,9 @@ function RestaurantDetail() {
           </Box>
         </Box>
         {createElement(
+          
           { info: Information, menu: Menu, book: Booking }[currentTab],
-          { restaurant }
+          { restaurant },
         )}
       </>
     );

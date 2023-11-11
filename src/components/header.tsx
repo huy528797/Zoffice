@@ -9,7 +9,7 @@ function AppHeader() {
   const location = useLocation();
 
   const restaurant = useRestaurant(
-    Number(new URLSearchParams(location.search).get("id"))
+    Number(new URLSearchParams(location.search).get("id")),
   );
 
   const title = useMemo(() => {

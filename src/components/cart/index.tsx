@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useEffect, useRef, useState } from "react";
-import { Box, Button, Sheet, Text } from "zmp-ui";
+import { Box, Button, Sheet, Text, Icon } from "zmp-ui";
 import { useNavigate, useLocation } from "react-router-dom";
 import Price from "../format/price";
 import { useRestaurant } from "../../hooks";
@@ -62,10 +62,11 @@ function Cart() {
 
   const sheetRef = useRef<any>();
 
-  const nextStep = () => {
-    sheetRef.current.snapTo(1);
-    setExpanded(true);
-  };
+  // const nextStep = () => {
+  //   sheetRef.current.snapTo(1);
+  //   setExpanded(true);
+  //   // navigate("/payment");
+  // };
 
   useEffect(() => {
     document
@@ -79,7 +80,20 @@ function Cart() {
     setRestaurantTab("book");
   };
 
-  const payFoods = async () => {
+  // const payFoods = async () => {
+  //   await pay(total);
+  //   setBookings((bookings) => [
+  //     ...bookings,
+  //     {
+  //       id: +new Date() + "",
+  //       restaurant: restaurant!,
+  //       cart,
+  //     },
+  //   ]);
+  //   message("Đặt thức ăn thành công");
+  //   navigate("/calendar/");
+  // };
+  const handlePayMent = async () => {
     await pay(total);
     setBookings((bookings) => [
       ...bookings,
@@ -89,8 +103,14 @@ function Cart() {
         cart,
       },
     ]);
-    message("Đặt thức ăn thành công");
-    navigate("/calendar/");
+
+    navigate({
+      pathname: "/payment",
+      search: new URLSearchParams({
+        id: String(restaurant.id),
+      }).toString(),
+    });
+    // navigate("/payment");
   };
   const visible = useMemo(
     () =>
@@ -115,7 +135,7 @@ function Cart() {
         <>
           <Box p={4} flex justifyContent="center">
             <Title className="font-semibold" size="small">
-              Pizza
+              Thông tin món
             </Title>
           </Box>
           <hr />
@@ -145,12 +165,14 @@ function Cart() {
           size="large"
           fullWidth
           className="rounded-xl"
-          onClick={expaned ? book : nextStep}
+          // onClick={expaned ? book : nextStep}
+          onClick={handlePayMent}
         >
-          {expaned ? <span>Đặt bàn với thực đơn</span> : <span>Tiếp theo</span>}
+          {/* {expaned ? <span>Đặt bàn với thực đơn</span> : <span>Tiếp theo</span>} */}
+          <span>Thanh toán</span>
         </Button>
       </Box>
-      {expaned && (
+      {/* {expaned && (
         <Box m={0} px={6} pt={4} pb={6}>
           <Button
             onClick={payFoods}
@@ -162,7 +184,7 @@ function Cart() {
             Chỉ đặt món ăn
           </Button>
         </Box>
-      )}
+      )} */}
     </Sheet>
   ) : (
     <></>

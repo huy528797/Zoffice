@@ -26,7 +26,7 @@ export const positionState = selector<Location | undefined>({
         if (token) {
           console.warn(
             "Gửi token này lên server để giải mã vị trí. Xem hướng dẫn tại: https://mini.zalo.me/blog/thong-bao-thay-doi-luong-truy-xuat-thong-tin-nguoi-dung-tren-zalo-mini-app",
-            token
+            token,
           );
           return {
             lat: 10.762701,
@@ -101,7 +101,7 @@ export const restaurantsState = selector<Restaurant[]>({
 
 export const categoriesState = selector({
   key: "categories",
-  get: () => ["Pizza", "Pasta", "Salad", "Sandwich", "Drink"],
+  get: () => ["Theo set", "Theo món", "Đồ uống"],
 });
 
 export const menuState = selector({
@@ -128,7 +128,7 @@ export const foodsState = selector({
       price: 400000,
       image:
         "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      categories: ["Pizza", "Pasta", "Salad", "Sandwich", "Drink"],
+      categories: ["Theo set", "Theo món", "Đồ uống"],
       description: `Pizza Hải Sản Xốt Pesto Với Hải Sản (Tôm, Mực) Nhân Đôi Cùng Với Nấm Trên Nền Xốt Pesto Đặc Trưng, Phủ Phô Mai Mozzarella Từ New Zealand Và Quế Tây.`,
       options: [
         {
@@ -175,7 +175,7 @@ export const foodsState = selector({
       price: 400000,
       image:
         "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      categories: ["Pizza"],
+      categories: ["Theo set", "Theo món", "Đồ uống"],
       description: `Pizza Hải Sản Xốt Pesto Với Hải Sản (Tôm, Mực) Nhân Đôi Cùng Với Nấm Trên Nền Xốt Pesto Đặc Trưng, Phủ Phô Mai Mozzarella Từ New Zealand Và Quế Tây.`,
       options: [
         {
@@ -222,7 +222,7 @@ export const foodsState = selector({
       price: 400000,
       image:
         "https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80",
-      categories: ["Pizza", "Drink"],
+      categories: ["Theo set", "Theo món", "Đồ uống"],
       description: `Pizza Hải Sản Xốt Pesto Với Hải Sản (Tôm, Mực) Nhân Đôi Cùng Với Nấm Trên Nền Xốt Pesto Đặc Trưng, Phủ Phô Mai Mozzarella Từ New Zealand Và Quế Tây.`,
       options: [
         {
@@ -269,7 +269,7 @@ export const foodsState = selector({
       price: 400000,
       image:
         "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
-      categories: ["Pizza", "Drink"],
+      categories: ["Theo set", "Theo món", "Đồ uống"],
       description: `Pizza Hải Sản Xốt Pesto Với Hải Sản (Tôm, Mực) Nhân Đôi Cùng Với Nấm Trên Nền Xốt Pesto Đặc Trưng, Phủ Phô Mai Mozzarella Từ New Zealand Và Quế Tây.`,
       options: [
         {
@@ -352,11 +352,11 @@ export const popularRestaurantsState = selector<Restaurant[]>({
     const selectedDistrict = get(selectedDistrictState);
     return restaurants
       .filter((restaurant) =>
-        restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+        restaurant.name.toLowerCase().includes(keyword.toLowerCase()),
       )
       .filter(
         (restaurant) =>
-          selectedDistrict === 0 || restaurant.districtId === selectedDistrict
+          selectedDistrict === 0 || restaurant.districtId === selectedDistrict,
       )
       .filter((restaurant) => restaurant.views >= 50);
   },
@@ -396,7 +396,7 @@ export const totalState = selector({
     const cart = get(cartState);
     return cart.items.reduce(
       (total, item) => total + item.quantity * item.food.price,
-      0
+      0,
     );
   },
 });
@@ -436,7 +436,7 @@ export const bookingsState = atom<Booking[]>({
               },
             },
           ]);
-        }
+        },
       );
     },
   ],

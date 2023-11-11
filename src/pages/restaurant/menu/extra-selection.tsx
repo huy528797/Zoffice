@@ -15,7 +15,7 @@ const ExtraSelection: FunctionComponent<ExtraSelectionProps> = ({
   onChange,
 }) => {
   const [selected, setSelected] = useState(
-    extra.options.find((o) => o.selected)?.key ?? extra.options[0].key
+    extra.options.find((o) => o.selected)?.key ?? extra.options[0].key,
   );
   useEffect(() => {
     onChange(selected);

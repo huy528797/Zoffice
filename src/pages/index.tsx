@@ -3,6 +3,7 @@ import { Page, Box, Avatar, Text } from "zmp-ui";
 import { getConfig } from "../components/config-provider";
 import Inquiry, { QuickFilter } from "../components/inquiry";
 import RestaurantItem from "../components/restaurant";
+import { useNavigate, useLocation} from "react-router-dom";
 import {
   useRecoilValue,
   useRecoilValue_TRANSITION_SUPPORT_UNSTABLE,
@@ -17,7 +18,8 @@ const { Title, Header } = Text;
 
 function Popular() {
   const populars = useRecoilValue(popularRestaurantsState);
-
+  const location = useLocation();
+  console.log('location', location)
   return (
     <>
       <Box mx={4} mt={6}>
@@ -48,7 +50,7 @@ function Popular() {
 
 function Nearest() {
   const nearests = useRecoilValue_TRANSITION_SUPPORT_UNSTABLE(
-    nearestRestaurantsState
+    nearestRestaurantsState,
   );
   return (
     <>
@@ -94,15 +96,15 @@ const HomePage = () => {
         <Suspense>
           <Welcome />
         </Suspense>
-        {getConfig((c) => c.template.searchBar) && (
+        {/* {getConfig((c) => c.template.searchBar) && (
           <>
             <Inquiry />
             <Header className="mt-6 font-semibold">Phân loại nhanh</Header>
           </>
         )}
-        <QuickFilter />
+        <QuickFilter /> */}
       </Box>
-      <Popular />
+      {/* <Popular /> */}
       <Suspense>
         <Nearest />
       </Suspense>

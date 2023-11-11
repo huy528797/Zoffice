@@ -12,10 +12,14 @@ interface CartItemProps {
 }
 
 const CartItem: FunctionComponent<CartItemProps> = ({ item, onEdit }) => {
+  console.log(item);
   return (
     <Box flex justifyContent="space-between" p={4}>
       <Box flex>
-        <Button className="w-12 min-w-0 p-0">{item.quantity}x</Button>
+        <div className="zaui-avatar zaui-avatar-text-large">
+          <img src={item.food.image} className="zaui-avatar-image" />
+        </div>
+
         <div className="ml-6">
           <Title size="small">{item.food.name}</Title>
           {item.food.extras.map((extra) => (
@@ -29,6 +33,10 @@ const CartItem: FunctionComponent<CartItemProps> = ({ item, onEdit }) => {
               <Text key={option.key}>{option.label}</Text>
             ))}
           {item.note && <>Ghi chú: {item.note}</>}
+          <Box flex justifyContent="space-between">
+            <Title size="small">Số lượng:</Title>
+            <Title size="small">{item.quantity}x</Title>
+          </Box>
         </div>
       </Box>
       <Box

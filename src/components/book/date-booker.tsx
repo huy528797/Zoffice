@@ -82,7 +82,7 @@ const DateBooker: FunctionComponent<DateBookerProps> = ({ onChange }) => {
     (swiper) => {
       onChange(datesOfMonth[swiper.activeIndex]);
     },
-    [datesOfMonth]
+    [datesOfMonth],
   );
 
   return (

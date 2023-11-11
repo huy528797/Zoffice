@@ -1,5 +1,6 @@
 import { FC, ReactNode, useState } from "react";
-import { Box, Button, Sheet, Text } from "zmp-ui";
+import { Box, Button, Sheet, Text, Modal, Tabs } from "zmp-ui";
+import { useNavigate, useLocation } from "react-router-dom";
 import Price from "../components/format/price";
 import { useBookingTotal } from "../hooks";
 import Time from "../components/format/time";
@@ -7,6 +8,7 @@ import CartItem from "../components/cart/cart-item";
 import React from "react";
 import { Booking } from "../models";
 import { createPortal } from "react-dom";
+import { Restaurant } from "../models";
 
 const { Title } = Text;
 
@@ -31,6 +33,15 @@ const BookingDetail: FC<{
 }> = ({ children, booking }) => {
   const [total] = useBookingTotal(booking);
   const [visible, setVisible] = useState(false);
+
+  const [dialogChooseDish, setDialogChooseDish] = useState(false);
+  const navigate = useNavigate();
+  // const location = useLocation();
+  // console.log("location", location);
+  // const handleOpenChooseDish = () => {
+  //   console.log('aaaaaaaaaa')
+  //   navigate("/restaurant", {state :{key: "value"}});
+  // }
 
   return (
     <>
@@ -86,7 +97,18 @@ const BookingDetail: FC<{
                 </Box>
               ) : (
                 <Box my={4} flex justifyContent="center">
-                  Không có món ăn
+                  <Button
+                    onClick={() => {
+                      navigate({
+                        pathname: "/restaurant",
+                        search: new URLSearchParams({
+                          id: String(booking.restaurant.id),
+                        }).toString(),
+                      });
+                    }}
+                  >
+                    Chọn thực đơn
+                  </Button>
                 </Box>
               )}
               <hr />

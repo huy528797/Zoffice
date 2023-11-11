@@ -20,7 +20,7 @@ function Inquiry() {
 
 export function QuickFilter() {
   const [selectedDistrict, setSelectedDistrict] = useRecoilState(
-    selectedDistrictState
+    selectedDistrictState,
   );
   const districts = useRecoilValue(districtsState);
 

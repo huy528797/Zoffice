@@ -74,6 +74,7 @@ export interface CartItem {
   quantity: number;
   food: Food;
   note: string;
+  // image:string;
 }
 
 export type Hours = [number, number, "AM" | "PM"];

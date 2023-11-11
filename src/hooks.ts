@@ -10,7 +10,7 @@ export const useRestaurant = (id?: number) => {
     return restaurants.find(
       (restaurant) =>
         restaurant.id ==
-        (id ? id : Number(new URLSearchParams(location.search).get("id")))
+        (id ? id : Number(new URLSearchParams(location.search).get("id"))),
     );
   }, [restaurants, id, location.search]);
   return restaurant;
@@ -22,7 +22,7 @@ export const useBookingTotal = (booking?: Booking) => {
     if (!booking || !booking.cart) return serviceFee;
     return booking.cart.items.reduce(
       (total, item) => total + item.food.price * item.quantity,
-      serviceFee
+      serviceFee,
     );
   }, [booking]);
   return [total];
