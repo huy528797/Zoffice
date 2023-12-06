@@ -21,19 +21,21 @@ function Booking({ restaurant }: { restaurant: Restaurant }) {
   const [hour, setHour] = useState(restaurant.hours.opening);
   const [date, setDate] = useState(new Date());
   const setBookings = useSetRecoilState(bookingsState);
-  const [table, setTable] = useState("05");
+  const [table, setTable] = useState("Bàn thường");
   const total = useRecoilValue(totalState);
   const navigate = useNavigate();
   const cart = useRecoilValue(cartState);
 
   const book = async () => {
-    const serviceFee = getConfig((c) => c.template.serviceFee);
-    await pay(serviceFee + total);
+    // const serviceFee = getConfig((c) => c.template.serviceFee);
+    // await pay(serviceFee + total);
+    await pay(total);
     setBookings((bookings) => [
       ...bookings,
       {
         restaurant,
         id: +new Date() + "",
+        startus: "upcoming",
         cart,
         bookingInfo: {
           seats,
@@ -50,9 +52,9 @@ function Booking({ restaurant }: { restaurant: Restaurant }) {
   return (
     <>
       <Box mx={4} my={6}>
+        <TableBooker value={table} onChange={setTable} />
         <DateBooker onChange={setDate} />
         <Box flex justifyContent="space-between" my={6}>
-          <TableBooker value={table} onChange={setTable} />
           <SeatsPicker value={seats} onChange={setSeats} />
         </Box>
         <TimeBooker hours={restaurant.hours} onChange={setHour} />
@@ -62,12 +64,12 @@ function Booking({ restaurant }: { restaurant: Restaurant }) {
         p={6}
         className="bg-white fixed bottom-0 left-0 right-0 shadow z-10 border"
       >
-        <Box mb={4} flex justifyContent="space-between">
+        {/* <Box mb={4} flex justifyContent="space-between">
           <Title size="small">Phí dịch vụ</Title>
           <Text className="ml-6 text-secondary font-semibold" size="xLarge">
             <Price amount={getConfig((c) => c.template.serviceFee)} />
           </Text>
-        </Box>
+        </Box> */}
         <Button fullWidth onClick={book}>
           Đặt bàn
         </Button>

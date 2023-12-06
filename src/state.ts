@@ -380,7 +380,7 @@ export const nearestRestaurantsState = selector<Restaurant[]>({
 
 export const currentRestaurantTabState = atom<TabType>({
   key: "currentRestaurantTab",
-  default: "info",
+  default: "menu",
 });
 
 export const cartState = atom<Cart>({
@@ -405,39 +405,39 @@ export const bookingsState = atom<Booking[]>({
   key: "bookings",
   default: [],
   effects: [
-    ({ setSelf, getPromise }) => {
-      // generate a demo booking item, can be safely deleted if you don't need it
-      Promise.all([getPromise(restaurantsState), getPromise(foodsState)]).then(
-        ([restaurants, foods]) => {
-          setSelf((bookings) => [
-            ...(Array.isArray(bookings) ? bookings : []),
-            {
-              id: "1234567890",
-              restaurant: restaurants[0],
-              cart: {
-                items: [
-                  {
-                    quantity: 1,
-                    food: foods[0],
-                    note: "",
-                  },
-                  {
-                    quantity: 2,
-                    food: foods[1],
-                    note: "Kèm ớt trái",
-                  },
-                ],
-              },
-              bookingInfo: {
-                date: new Date(),
-                hour: [20, 0, "PM"],
-                table: "05",
-                seats: 4,
-              },
-            },
-          ]);
-        },
-      );
-    },
+    // ({ setSelf, getPromise }) => {
+    //   // generate a demo booking item, can be safely deleted if you don't need it
+    //   Promise.all([getPromise(restaurantsState), getPromise(foodsState)]).then(
+    //     ([restaurants, foods]) => {
+    //       setSelf((bookings) => [
+    //         ...(Array.isArray(bookings) ? bookings : []),
+    //         {
+    //           id: "1234567890",
+    //           restaurant: restaurants[0],
+    //           cart: {
+    //             items: [
+    //               {
+    //                 quantity: 1,
+    //                 food: foods[0],
+    //                 note: "",
+    //               },
+    //               {
+    //                 quantity: 2,
+    //                 food: foods[1],
+    //                 note: "Kèm ớt trái",
+    //               },
+    //             ],
+    //           },
+    //           bookingInfo: {
+    //             date: new Date(),
+    //             hour: [20, 0, "PM"],
+    //             table: "05",
+    //             seats: 4,
+    //           },
+    //         },
+    //       ]);
+    //     },
+    //   );
+    // },
   ],
 });

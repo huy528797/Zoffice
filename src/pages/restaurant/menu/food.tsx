@@ -17,10 +17,10 @@ const FoodItem: FunctionComponent<FoodItemProps> = ({ food }) => {
       {(open) => (
         <div
           onClick={open}
-          className="p-6 bg-white text-center space-y-2"
-          style={{ borderRadius: 50 }}
+          className="p-3 bg-white text-center space-y-2"
+          style={{ borderRadius: 15 }}
         >
-          <Avatar size={96} src={food.image} />
+          <Avatar size={110} src={food.image} />
           <Title size="small">{food.name}</Title>
           <Text size="xLarge" className="text-secondary font-semibold">
             <Price amount={food.price} />

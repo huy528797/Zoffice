@@ -3,13 +3,22 @@
     "title": "ZaUI Restaurant",
     "headerColor": "",
     "textColor": "black",
-    "statusBarColor": "#f4f5f6",
-    "leftButton": "back"
+    "statusBarColor": {
+      "light": "#f4f5f6",
+      "dark": "#171717"
+    },
+    "leftButton": "back",
+    "textAlign": "left",
+    "actionBarHidden": false,
+    "hideAndroidBottomNavigationBar": false,
+    "hideIOSSafeAreaBottom": false,
+    "selfControlLoading": false,
+    "statusBar": "normal"
   },
   "template": {
     "primaryColor": "",
     "secondaryColor": "",
-    "serviceFee": 25000,
+    "serviceFee": "0",
     "searchBar": true
   },
   "debug": false,

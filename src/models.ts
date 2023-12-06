@@ -81,6 +81,7 @@ export type Hours = [number, number, "AM" | "PM"];
 
 export interface Booking {
   id: string;
+  // startus:string;
   restaurant: Restaurant;
   cart?: Cart;
   bookingInfo?: {

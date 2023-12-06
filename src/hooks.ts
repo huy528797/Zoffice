@@ -18,7 +18,8 @@ export const useRestaurant = (id?: number) => {
 
 export const useBookingTotal = (booking?: Booking) => {
   const total = useMemo(() => {
-    const serviceFee = getConfig((c) => c.template.serviceFee);
+    // const serviceFee = getConfig((c) => c.template.serviceFee);
+    const serviceFee = 0;
     if (!booking || !booking.cart) return serviceFee;
     return booking.cart.items.reduce(
       (total, item) => total + item.food.price * item.quantity,

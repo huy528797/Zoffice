@@ -21,15 +21,15 @@ const FoodPicker: FC<{
       typeof cartItemIndex !== "undefined"
         ? cart.items[cartItemIndex]
         : undefined,
-    [cart, cartItemIndex],
+    [cart, cartItemIndex]
   );
   const food = useMemo(
     () => (cartItem ? cartItem.food : foodProp!),
-    [cartItem],
+    [cartItem]
   );
 
   const [extras, setExtras] = useState<string[]>(
-    cartItem ? cartItem.food.extras.map((e) => e.key) : [],
+    cartItem ? cartItem.food.extras.map((e) => e.key) : []
   );
   const [options, setOptions] = useState(food.options.map((o) => o.selected));
   const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
@@ -61,6 +61,12 @@ const FoodPicker: FC<{
       } else {
         cartItems.push(item);
       }
+      console.log(cartItems);
+      for (let i = cartItems.length - 1; i >= 0; i--) {
+        if (cartItems[i].quantity == 0) {
+          cartItems.splice(i, 1);
+        }
+      }
       return {
         items: cartItems,
       };
@@ -89,7 +95,7 @@ const FoodPicker: FC<{
           <Box mt={6} mb={5} flex justifyContent="center" alignItems="center">
             <Button
               icon={<Icon icon="zi-minus-circle" />}
-              disabled={quantity === 1}
+              disabled={quantity === 0}
               onClick={() => setQuantity((q) => q - 1)}
             ></Button>
             <Text className="mx-4">{quantity}</Text>
@@ -175,7 +181,7 @@ const FoodPicker: FC<{
             </Box>
           </Box>
         </Sheet>,
-        document.body,
+        document.body
       )}
     </>
   );

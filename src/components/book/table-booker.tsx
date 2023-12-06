@@ -14,25 +14,25 @@ const TableBooker: FunctionComponent<TableBookerProps> = ({
   onChange,
 }) => {
   return (
-    <div className="w-36 space-y-2">
-      <Title size="small">Bàn số</Title>
+    <div className="w-ful space-y-2">
+      <Title size="small">Chọn loại bàn</Title>
       <div className="relative w-full rounded-full bg-white h-14 flex items-center justify-between overflow-hidden border-none text-sm table-booker">
         <Picker
           mask
           maskClosable
-          title="Bàn số"
+          title="Chọn loại bàn"
           action={{
             text: "Chọn",
             close: true,
           }}
-          placeholder="No.01"
+          placeholder="Chọn loại bàn"
           defaultValue={{ value }}
           onChange={({ table }) => onChange(table.value as string)}
           data={[
             {
-              options: ["01", "02", "03", "04", "05"].map((table) => ({
+              options: ["Bàn thường", "Bàn tiệc"].map((table) => ({
                 value: table,
-                displayName: `No.${table}`,
+                displayName: `${table}`,
               })),
               name: "table",
             },

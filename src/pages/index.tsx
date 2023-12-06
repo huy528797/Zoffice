@@ -3,7 +3,7 @@ import { Page, Box, Avatar, Text } from "zmp-ui";
 import { getConfig } from "../components/config-provider";
 import Inquiry, { QuickFilter } from "../components/inquiry";
 import RestaurantItem from "../components/restaurant";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   useRecoilValue,
   useRecoilValue_TRANSITION_SUPPORT_UNSTABLE,
@@ -18,8 +18,7 @@ const { Title, Header } = Text;
 
 function Popular() {
   const populars = useRecoilValue(popularRestaurantsState);
-  const location = useLocation();
-  console.log('location', location)
+
   return (
     <>
       <Box mx={4} mt={6}>
@@ -50,7 +49,7 @@ function Popular() {
 
 function Nearest() {
   const nearests = useRecoilValue_TRANSITION_SUPPORT_UNSTABLE(
-    nearestRestaurantsState,
+    nearestRestaurantsState
   );
   return (
     <>
@@ -90,6 +89,8 @@ function Welcome() {
 }
 
 const HomePage = () => {
+  const location = useLocation();
+  console.log("location", location);
   return (
     <Page>
       <Box mx={4} mb={4} mt={5}>

@@ -3,36 +3,35 @@ import { Box, Button, Icon, Text } from "zmp-ui";
 import Distance from "../../components/distance";
 import DistrictName from "../../components/district-name";
 import { TabType } from "../../models";
-import Information from "./information";
+// import Information from "./information";
 import Menu from "./menu";
 import Booking from "./booking";
 import { useRecoilState } from "recoil";
 import { currentRestaurantTabState } from "../../state";
 import React from "react";
 import { useRestaurant } from "../../hooks";
-import {  useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 function RestaurantDetail() {
   const restaurant = useRestaurant();
-  const [currentTab, setCurrentTab] = useRecoilState(currentRestaurantTabState);
-  // const [currentTab, setCurrentTab] = useState("menu");
+
+  // const [currentTab, setCurrentTab] = useRecoilState(currentRestaurantTabState);
+  const [currentTab, setCurrentTab] = useState("menu");
   const TabItem = ({
     tab,
     children,
   }: {
     tab: TabType;
     children: ReactNode;
-
   }) => {
-    console.log(tab)
-    return(
+    return (
       <Button
-      size="small"
-      variant={currentTab === tab ? "primary" : "tertiary"}
-      onClick={() => setCurrentTab(tab)}
-      className="mx-1 flex-none"
-    >
-      {children}
-    </Button>
+        size="small"
+        variant={currentTab === tab ? "primary" : "tertiary"}
+        onClick={() => setCurrentTab(tab)}
+        className="mx-1 flex-none"
+      >
+        {children}
+      </Button>
     );
   };
 
@@ -75,17 +74,19 @@ function RestaurantDetail() {
               </Button>
             </Box>
             <Box flex justifyContent="center" mb={0}>
-              <TabItem tab="info">Thông tin</TabItem>
+              {/* <TabItem tab="info">Thông tin</TabItem> */}
               <TabItem tab="menu">Thực đơn</TabItem>
               <TabItem tab="book">Đặt bàn</TabItem>
             </Box>
           </Box>
         </Box>
-        {createElement(
-          
+        {/* {createElement(
           { info: Information, menu: Menu, book: Booking }[currentTab],
-          { restaurant },
-        )}
+          { restaurant }
+        )} */}
+        {createElement({ menu: Menu, book: Booking }[currentTab], {
+          restaurant,
+        })}
       </>
     );
   }

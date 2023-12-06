@@ -24,7 +24,7 @@ const BookingItem: FunctionComponent<BookingItemProps> = ({ booking }) => {
   const unbook = (id: string) => {
     setBooking((bs) => bs.filter((booking) => booking.id !== id));
   };
-
+  console.log(booking);
   return (
     <Box flex alignItems="center" px={4}>
       <Swipeable

@@ -14,7 +14,7 @@ const SeatsBooker: FunctionComponent<SeatsBookerProps> = ({
   onChange,
 }) => {
   return (
-    <div className="w-36 space-y-2">
+    <div className="w-full space-y-2">
       <Title size="small">Số ghế</Title>
       <div className="flex rounded-full bg-white h-14 items-center justify-between px-1">
         <Button

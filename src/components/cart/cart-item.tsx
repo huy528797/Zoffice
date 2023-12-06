@@ -12,7 +12,6 @@ interface CartItemProps {
 }
 
 const CartItem: FunctionComponent<CartItemProps> = ({ item, onEdit }) => {
-  console.log(item);
   return (
     <Box flex justifyContent="space-between" p={4}>
       <Box flex>

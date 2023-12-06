@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState, useRef } from "react";
 import { Box, Button, Sheet, Text, Modal, Tabs } from "zmp-ui";
 import { useNavigate, useLocation } from "react-router-dom";
 import Price from "../components/format/price";
@@ -9,7 +9,9 @@ import React from "react";
 import { Booking } from "../models";
 import { createPortal } from "react-dom";
 import { Restaurant } from "../models";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
+import { currentRestaurantTabState } from "../state";
 const { Title } = Text;
 
 function Section({ left, right }: { left: ReactNode; right: ReactNode }) {
@@ -27,21 +29,38 @@ function Section({ left, right }: { left: ReactNode; right: ReactNode }) {
     </>
   );
 }
+
 const BookingDetail: FC<{
   children: (open: () => void) => ReactNode;
   booking: Booking;
 }> = ({ children, booking }) => {
   const [total] = useBookingTotal(booking);
   const [visible, setVisible] = useState(false);
-
-  const [dialogChooseDish, setDialogChooseDish] = useState(false);
+  var Payment = localStorage.getItem("myData");
+  let data = JSON.parse(Payment);
+  let id = data?.id;
+  console.log(Payment);
+  console.log(id);
+  console.log(booking.id);
+  if (id == booking.id) {
+    console.log("vvvvvvvv,aaaaaaaaaaaa");
+  }
+  console.log(booking);
+  // const setRestaurantTab = useSetRecoilState(currentRestaurantTabState);
+  // const book = () => {
+  //   setRestaurantTab("book");
+  // };
   const navigate = useNavigate();
-  // const location = useLocation();
-  // console.log("location", location);
-  // const handleOpenChooseDish = () => {
-  //   console.log('aaaaaaaaaa')
-  //   navigate("/restaurant", {state :{key: "value"}});
-  // }
+  const menuFood = () => {
+    var book = localStorage.setItem("paymentBook", JSON.stringify(booking));
+    // console.log(book);
+    navigate({
+      pathname: "/restaurant",
+      search: new URLSearchParams({
+        id: String(booking.restaurant.id),
+      }).toString(),
+    });
+  };
 
   return (
     <>
@@ -97,18 +116,7 @@ const BookingDetail: FC<{
                 </Box>
               ) : (
                 <Box my={4} flex justifyContent="center">
-                  <Button
-                    onClick={() => {
-                      navigate({
-                        pathname: "/restaurant",
-                        search: new URLSearchParams({
-                          id: String(booking.restaurant.id),
-                        }).toString(),
-                      });
-                    }}
-                  >
-                    Chọn thực đơn
-                  </Button>
+                  <Button onClick={menuFood}>Chọn thực đơn</Button>
                 </Box>
               )}
               <hr />

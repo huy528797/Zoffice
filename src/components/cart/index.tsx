@@ -28,6 +28,7 @@ function CartDetail() {
         cartItemIndex: String(i),
       }).toString(),
     });
+
     setTimeout(() => {
       document.querySelector(".sheet-backdrop")?.classList.add("backdrop-in");
     }, 300); // workaround for backdrop not showing
@@ -62,11 +63,11 @@ function Cart() {
 
   const sheetRef = useRef<any>();
 
-  // const nextStep = () => {
-  //   sheetRef.current.snapTo(1);
-  //   setExpanded(true);
-  //   // navigate("/payment");
-  // };
+  const nextStep = () => {
+    sheetRef.current.snapTo(1);
+    setExpanded(true);
+    // navigate("/payment");
+  };
 
   useEffect(() => {
     document
@@ -76,9 +77,9 @@ function Cart() {
 
   const currentTab = useRecoilValue(currentRestaurantTabState);
 
-  const book = () => {
-    setRestaurantTab("book");
-  };
+  // const book = () => {
+  //   setRestaurantTab("book");
+  // };
 
   // const payFoods = async () => {
   //   await pay(total);
